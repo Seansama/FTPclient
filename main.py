@@ -1,16 +1,10 @@
-# This is a sample Python script.
+from ftplib import FTP
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+host = "seansama.bplaced.net"
+user = "seansama"
+with open('text.txt', 'r') as f:
+    password = f.read()
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+with FTP(host) as ftp:
+    ftp.login(user=user, passwd=password)
+    print(ftp.getwelcome())
